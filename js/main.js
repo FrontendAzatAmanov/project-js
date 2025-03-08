@@ -1,14 +1,4 @@
 const numberOfFilms = Number(prompt('Сколько фильмов вы уже посмотрели?',''));
-if (numberOfFilms > 0 && numberOfFilms <= 10 ) {
-  console.log('Просмотрено довольно мало фильмов')
-}else if ( numberOfFilms > 10 && numberOfFilms <= 30) {
-  console.log('Вы классический зритель')
-}else if ( numberOfFilms > 30 ) {
-  console.log('Вы киноман!')
-}
-else (
-  console.error('error')
-)
 
 
 const personalMovieDB = {
@@ -22,18 +12,21 @@ const personalMovieDB = {
 
 for (let i =0; i < 2;i++) {
   let a = prompt('Один из последних просмотренных фильмов?');
-  let b = +prompt('На сколько оцените его?');
+  let b = +prompt('На сколько оцените его? от 0 до 10');
 
-  if (a != null && b != null && a != '' && b != '' && a.length < 50  ) {
-    personalMovieDB.movies[a] = b;
-    console.log('done')
-  }else {
-    console.log('error');
-    i--;
-  }
-
-}
-
+  // if (a != null && b != null && a != '' && b != '' && a.length < 50 && b < 11) {
+  //   personalMovieDB.movies[a] = b;
+  //   console.log('done')
+  // }else {
+  //   console.error('error');
+  //   i--;
+  // }
+  a != null && b != null && a != '' && b != '' && a.length < 50 ? (personalMovieDB.movies[a] = b, console.log('done')): 
+  (console.error('error'), i--);
+} 
+personalMovieDB.count > 0 && personalMovieDB.count <= 10 ? console.log('Вы посмотрели довольно мало фильмов') :
+personalMovieDB.count >10 && personalMovieDB.count <= 30 ? console.log('Вы классический киноман') : 
+console.log('Вы киноман');
 
 
 console.log(personalMovieDB);
